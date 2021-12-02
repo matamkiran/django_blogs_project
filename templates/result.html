@@ -1,0 +1,12 @@
+<body bgcolor="grey">
+ <h1>welcome - My App demo</h1>
+<ul>
+   
+   
+        {% for value in result %} 
+        <table> <tr><td>{{value.title}} </td> <td> {{value.description}} </td> </tr> </table>
+        {% endfor %}
+    
+        <button >
+                <a href="/">Go back home</a>              </button>
+</ul>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+		* {
+			padding: 0;
+			margin: 0;
+			font-family: sans-serif;
+		}
+
+		body {
+			background: yellowgreen;
+		}
+
+		.container {
+			text-align: left;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+		}
+
+		.container span {
+			display: block;
+		}
+
+		.text1 {
+			color: white;
+			font-size: 70px;
+			font-weight: 700;
+			letter-spacing: 8px;
+			margin-bottom: 20px;
+			background: yellowgreen;
+			position: relative;
+			animation: text 3s 1;
+		}
+
+		.text2 {
+			font-size: 30px;
+			color: darkgreen;
+			font-family: Georgia, serif;
+		}
+
+		@keyframes text {
+			0% {
+				color: black;
+				margin-bottom: -40px;
+			}
+
+			30% {
+				letter-spacing: 25px;
+				margin-bottom: -40px;
+			}
+
+			85% {
+				letter-spacing: 8px;
+				margin-bottom: -40px;
+			}
+		}
+		textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+	</style>
+<body bgcolor=blue>
+<marquee>Django project - Demo on Nov29,2021 </marquee>
+<div class="container">
+    <div class="row">
+        <span class="text1">welcome to Django Demo!</span>
+        <span class="text2"></span>
+    </div>
+
+
+<form action="add" method="POST" >
+
+    {% csrf_token %}
+    <table>
+    <tr>
+    <td>Blog title  :</td><td><input type="text" name="title"></td>
+    </tr>
+	<tr>
+		<td>Description     :</td>
+	<td>
+	<textarea name="description">start typing your blog...</textarea>
+</td>
+</tr>
+    </table>
+    <input type="submit" value="Submit" style="background-color:rgb(194, 116, 13);color:white;padding:5px;font-size:18px;border:none;padding:8px;">
+
+    </div>
+</form>
+
+
+
+</body>
+</html>
+
