@@ -1,12 +1,101 @@
-<body bgcolor="grey">
- <h1>welcome - My App demo</h1>
-<ul>
+<style>
+.users {
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+}
+/* Column widths are based on these cells */
+.row-ID {
+  width: 5%;
+}
+.row-name {
+  width: 20%;
+}
+.row-job {
+  width: 65%;
+}
+.row-email {
+  width: 5%;
+}
+.users td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.users th {
+  background: darkblue;
+  color: white;
+}
+.users td,
+.users th {
+  text-align: left;
+  padding: 5px 10px;
+}
+.users tr:nth-child(even) {
+  background: lightblue;
+}
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button1 {background-color: #4CAF50;} /* Green */
+.button2 {background-color: #008CBA;} /* Blue */
+</style>
+<body bgcolor="white">
+ <h1>Blog list</h1> <button class="button button2">
+        <a href="/">Create Blog</a>              </button>
+
    
-   
+        <table class="users">
+        <thead>
+                <tr>
+                  <th class="row-1 row-ID">ID</th>
+                  <th class="row-2 row-name">Title</th>
+                  <th class="row-3 row-job">Description</th>
+                  <th class="row-4 row-email">Delete<th>
+                  <th class="row-4 row-email">Edit<th>
+                </tr>
+        </thead>
+        </table>
         {% for value in result %} 
-        <table> <tr><td>{{value.title}} </td> <td> {{value.description}} </td> </tr> </table>
+        <table class="users"> 
+               
+                <tbody>
+                
+                <tr class="users tr:nth-child">
+                        <td class="row-1 row-ID">{{value.id}} </td>
+                        <td class="row-2 row-name">{{value.title}} </td>
+                        <td class="row-3 row-job"> {{value.description}} </td>
+                        <td class="row-4 row-email">
+                        
+                        <form method="POST" action="delete">
+                                {% csrf_token %}
+                            <input type="hidden" value={{value.id}} name="id">
+                        
+                        <input type="Submit" name="Delete"></input>
+                        </form>
+                    </td>
+                    <td class="row-4 row-email">
+                        
+                        <form method="POST" action="editrow">
+                                {% csrf_token %}
+                            <input type="hidden" value={{value.id}} name="id">
+                        
+                        <input type="Submit" name="editrow"></input>
+                        </form>
+                    </td>
+        </tr> 
+        </tbody>
+        </table>
         {% endfor %}
     
-        <button >
-                <a href="/">Go back home</a>              </button>
-</ul>
+        
+

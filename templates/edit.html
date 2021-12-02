@@ -79,20 +79,25 @@ resizedTextbox {width:200%; height: 40px}
     </div>
 
 
-<form action="add" method="POST" >
-
+<form action="edit" method="POST" >
+  {% for value in result %}
     {% csrf_token %}
     <table>
+      <tr>
+        <td><input type="hidden" value={{value.id}} name="id"></td>
+      </tr>
     <tr>
-    <td>Blog title  :</td><td><input type="text" name="title" ></td>
+      
+    <td>Blog title  :</td><td><input type="text" name="title" value="{{value.title}}"></td>
     </tr>
 	<tr>
 		<td>Description     :</td>
 	<td>
-	<textarea name="description">start typing your blog...</textarea>
+	<textarea name="description">{{value.description}}</textarea>
 </td>
 </tr>
     </table>
+    {% endfor %}
     <input type="submit" value="Submit" style="background-color:rgb(194, 116, 13);color:white;padding:5px;font-size:18px;border:none;padding:8px;">
 
     </div>

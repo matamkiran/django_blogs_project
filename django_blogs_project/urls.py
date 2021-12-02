@@ -20,5 +20,8 @@ from blogs import views
 urlpatterns = [
     #path('admin/', admin.site.urls),
     path('',views.home,name='home'),
-    path('add',views.add,name='add')
+    path('add',views.add,name='add'),
+    path('delete', views.delete, name="delete"),
+    path('edit', views.edit, name="edit"),
+    path('editrow', views.editrow, name="editrow"),
 ]
